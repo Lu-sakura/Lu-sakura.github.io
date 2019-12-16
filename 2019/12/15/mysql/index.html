@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="About, Lu-sakura">
-    <meta name="description" content="About | Lu-sakura">
+    <meta name="keywords" content="mysql, Lu-sakura">
+    <meta name="description" content="一、认识SQL什么是关系型数据库？行与列表关系型数据库常用的关系型数据库：、、2.是一种，可以是文档或键值等。Hbase()redis,MemcacheDB()MongoDB(型。关系型数据库与非关系型数据库的区别：非关系数据库的数据存储在">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>About | Lu-sakura</title>
+    <title>mysql | Lu-sakura</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -282,13 +282,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        about
+                        mysql
                     </div>
                 </div>
             </div>
@@ -404,9 +404,13 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">No tag</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/Lu-sakura.github.io/tags/mysql/">
+                                <span class="chip bg-color">mysql</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -427,7 +431,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    0
+                    751
                 </div>
                 
 
@@ -445,7 +449,14 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <p>一、认识SQL什么是关系型数据库？行与列表关系型数据库常用的关系型数据库：、、2.是一种，可以是文档或键值等。Hbase()redis,MemcacheDB()MongoDB(型。关系型数据库与非关系型数据库的区别：非关系数据库的数据存储在内存中，关系数据库的数据存储在硬盘中。参考文献：<a href="https://wwwogor/p/8729798.htmlMysql数据库的基本操作：表的基本操作：password连接数据库databases#use;选择进入数据库tables#create库名charset];创建数据库database;删除数据库" target="_blank" rel="noopener">https://wwwogor/p/8729798.htmlMysql数据库的基本操作：表的基本操作：password连接数据库databases#use;选择进入数据库tables#create库名charset];创建数据库database;删除数据库</a></p>
+<p>3.列的基本操作：数据类型：tinyintsmallintmediuintintbigint系列的声明时的参数：：指定宽度，需要与连用，：声明无符号，：如“0”浮点型：、M“”D“”字符型：：定长类型：变长类型：为字符宽度create表名列名,) myisam  utf8;表名#NULLshowfrom;同上table;删除表tableto#selectfrom;查看表的数据内容表名#deletedelete数据擦除。insert表名需要添加的列#values需要添加的数据修改表中的数据：表名要修改的列判断表达式删除表中的数据：fromwhere;create表名#insert库名表名导入的表selectfrom.();把一张表的内容，导入到另一张表。alter表名列名称列参数#alter表名列名称列参数某列#alter表名列名称列参数;添加到第一列tabledrop;删除指定列tablemodify新列类型;修改列的数据类型tablechange新列名新列参数#</p>
+<p>列类型“”DATETIMEDATETIMEST00000000000000’00:00:00’0000：文本类型：二进制类型，用于存储图片、音频等信息。5.创建一张商品表：tableid () auto_incrementkey#name () null’’#    price (,) null’0.00’#    amount () notdefault,商品数量varchar20notdefault,商品产地datenull’0000-00-00’#    expire notdefault#) myisam  utf8;insert commodity(,卫龙,,,漯河市,,),2’’’39.90’105’’’2019-04-25’’2019-07-17’(,组名,,,杭州市,,),4’’’51.20’50’’’2018-12-01’’2019-01-08’(,好吃点,,,惠安县,,),6’’’29.40’96’’’2019-05-01’’2019-08-01’(,奥利奥,,,北京市,,),8’’’189’190’’’2019-07-05’’2019-10-21’(,派力特,,,新乡市,,),10’’’37.90’101’’’2019-08-11’’2019-12-02’</p>
+<p>select子句：（条件查询），针对原始表 id,name,price  commodity  id &lt;= and3模糊查询：列出内容中有关键字的内容为通配符，可以匹配单个字符需要提取出来的列表名搜索的字段’%’</p>
+<p>select子句：与统计函数子句：（筛选），针对结果集子句：（排序），针对最终结果slect id,name,price,amount,price*amount  commodity;select() 表名select() 表名select() 表名select() 表名代表查询绝对的行数，包括；列名代表统计null分组统计：分组后再进行统计函数表名by;selectfromwhereorder需要进行排序的字段;order结果集中的列名()/asc();order结果集中的列名()/asc(),desc降序升序</p>
+<p>select子句：（限制条目）where——grder by——limitefromsqlsqlexistssqlsqlsql6.unionselectunion allselect7.[].bilibili.com/video/av19538278?frch&amp;seid=11920857297324718selectfromorder price limit,;查询出价格前三的商品 [],N:0：实际取出的行数limit ,select#select’’#select();当前用户 datebase();当前库名 version();数据库版本</p>
+<p><img src="C:%5CUsers%5Clenovo%5CDesktop%5C2.png" alt=""></p>
+
             </div>
             <hr/>
 
@@ -470,7 +481,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://Lu-sakura.github.io/Lu-sakura.github.io/about/index.html">https://Lu-sakura.github.io/Lu-sakura.github.io/about/index.html</a>
+                    <a href="https://Lu-sakura.github.io/Lu-sakura.github.io/2019/12/15/mysql/">https://Lu-sakura.github.io/Lu-sakura.github.io/2019/12/15/mysql/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -507,7 +518,11 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">No tag</span>
+                            
+                                <a href="/Lu-sakura.github.io/tags/mysql/">
+                                    <span class="chip bg-color">mysql</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -676,19 +691,19 @@
                 <i class="far fa-dot-circle"></i>&nbsp;Current
             </div>
             <div class="card">
-                <a href="/Lu-sakura.github.io/about/index.html">
+                <a href="/Lu-sakura.github.io/2019/12/15/mysql/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="about">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="mysql">
                         
-                        <span class="card-title">about</span>
+                        <span class="card-title">mysql</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            一、认识SQL什么是关系型数据库？行与列表关系型数据库常用的关系型数据库：、、2.是一种，可以是文档或键值等。Hbase()redis,MemcacheDB()MongoDB(型。关系型数据库与非关系型数据库的区别：非关系数据库的数据存储在
                         
                     </div>
                     <div class="publish-info">
@@ -705,33 +720,41 @@
                 </div>
 
                 
+                <div class="card-action article-tags">
+                    
+                    <a href="/Lu-sakura.github.io/tags/mysql/">
+                        <span class="chip bg-color">mysql</span>
+                    </a>
+                    
+                </div>
+                
             </div>
         </div>
         
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                Current&nbsp;<i class="far fa-dot-circle"></i>
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/Lu-sakura.github.io/about/index.html">
+                <a href="/Lu-sakura.github.io/2019/12/11/hello-world/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="about">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
                         
-                        <span class="card-title">about</span>
+                        <span class="card-title">Hello World</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-15
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-11
                             </span>
                         <span class="publish-author">
                             
@@ -741,7 +764,6 @@
                         </span>
                     </div>
                 </div>
-
                 
             </div>
         </div>

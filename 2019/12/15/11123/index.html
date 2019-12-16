@@ -4,8 +4,14 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="friends, Lu-sakura">
-    <meta name="description" content="friends | Lu-sakura">
+    <meta name="keywords" content="1, Lu-sakura">
+    <meta name="description" content="第四周-数据库系统功能相关学习[TOC]
+1.思考在执行函数的过程中用户需要有执行，创建函数权限
+执行函数存储过程
+授予执行{库名}。*至’{用户名}’@’％’;
+创建函数权限
+授予{库名}。*至’{用户名}’@’％’的例行程序;
+2.函数">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +19,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>friends | Lu-sakura</title>
+    <title>1 | Lu-sakura</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -282,13 +288,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        friends
+                        1
                     </div>
                 </div>
             </div>
@@ -404,9 +410,13 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">No tag</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/Lu-sakura.github.io/tags/%E6%98%8E%E5%A4%A9/">
+                                <span class="chip bg-color">明天</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -427,7 +437,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    0
+                    2.6k
                 </div>
                 
 
@@ -445,7 +455,250 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <h1 id="第四周-数据库系统功能相关学习"><a href="#第四周-数据库系统功能相关学习" class="headerlink" title="第四周-数据库系统功能相关学习"></a>第四周-数据库系统功能相关学习</h1><p>[TOC]</p>
+<h2 id="1-思考"><a href="#1-思考" class="headerlink" title="1.思考"></a>1.思考</h2><p>在执行函数的过程中用户需要有执行，创建函数权限</p>
+<p>执行函数存储过程</p>
+<p>授予执行{库名}。*至’{用户名}’@’％’;</p>
+<p>创建函数权限</p>
+<p>授予{库名}。*至’{用户名}’@’％’的例行程序;</p>
+<h2 id="2-函数测试"><a href="#2-函数测试" class="headerlink" title="2.函数测试"></a>2.函数测试</h2><blockquote>
+<p> emmm…..上周任务写了，这周就不在重复了吧。有兴趣的可以翻看上次测试还是比较全和详细的。</p>
+<p>这周补全上次缺失的一些吧(⊙o⊙)….</p>
+<p>==上周报告在对MD5这个测试在报告中漏写参数：123456==</p>
+<p><img src="D:%5CoCam%EF%BC%88%E5%BD%95%E5%B1%8F%EF%BC%89%5CSnipaste-2.2.1-Beta2-x64%5C1%E5%9B%BE%E7%89%87%5CSnipaste_2019-08-23_11-32-21.png" alt=""></p>
+</blockquote>
+<h3 id="字符串操纵函数（补充）"><a href="#字符串操纵函数（补充）" class="headerlink" title="字符串操纵函数（补充）"></a>字符串操纵函数（补充）</h3><blockquote>
+<p>字符串函数可以解析、替换、操纵字符型值。在处理原始字符数据时，最大的挑战之一是如何可靠地提取出有意义的信息。有很多字符串解析函数可用于标识和解析子字符串(一个大字符型值的一部分)。我们一直在做这种事，在我们阅读文件、发票或者书面材料时，就会本能地标识、分离出有意义的信息片段。这个过程的自动化非常困难，即使是处理不太复杂的文本，也很困难。这些函数包含几乎所有必需的工具，而挑战在于如何找出最简单、最高效的方法。</p>
+</blockquote>
+<h4 id="ASCII-、CHAR-、UNICODE-和NCHAR-函数"><a href="#ASCII-、CHAR-、UNICODE-和NCHAR-函数" class="headerlink" title="ASCII()、CHAR()、UNICODE()和NCHAR()函数"></a>ASCII()、CHAR()、UNICODE()和NCHAR()函数</h4><p>这四个函数是相似的，它们都可以在字符和字符的标准数字表示之间转换。美国标准信息交换码(American Standard Code for  Information Interchange，ASCII)标准字符集包含128个字母、数字和标点符号。这个字符集是IBM  PC体系结构的基础，虽然有些字符现在看来已经很古老了，但还是被保留了下来，且仍是现代计算机技术的核心。如果在计算机上使用英语，则键盘上的每个字符都是用ASCII码表示的。这对说英语(至少以英语打字)的计算机用户来说是有利的，但是其他人又该怎么办呢?</p>
+<p>在计算机的发展过程中， ASCII字符集发布没多长时间便过时了。人们很快将它扩展成为256个字符的ANSI字符集，一个字符用一个字节来保存。这个扩展的字符列表满足了许多其他用户的需求，可以支持主要的欧洲语言字符，不过仍是美国标准(由美国国家标准学会持有)，仍建立在最初的英语字符集的基础上。为了支持所有可印刷的语言，人们制订了Unicode标准，它支持多种语言特定的字符集。每个Unicode字符需要2个字节的存储空间，是ASCII与ANSI字符的两倍。但是使用2个字就可以表示超过65  000个不同的字符，完全能够支持东欧和亚洲字符。SQL Server同时支持ASCII与Unicode两种标准。</p>
+<p>ASCII()和CHAR()是两个基于ASCII的函数，这两个函数可将计算机上应用的每个字符表示为数字。要确定代表一个字符的数字是什么，就应给ASCII()函数传送只包含一个字符的字符串，如下：</p>
+<p>SELECT ASCII(‘A’) </p>
+<p>结果是65。</p>
+<p>如要将一个已知数字转换为字符，又该怎么办？使用CHAR()函数即可：</p>
+<p>SELECT CHAR(65) </p>
+<p>结果是字母A。</p>
+<p>UNICODE()函数是ASCII()的Unicode等价函数，NCHAR()函数和CHAR()函数的功能相同，只不过NCHAR()是用于Unicode字符的。SQL   Server的nchar与nvarchar类型能存储任何Unicode字符，可以和这两个函数一起使用。对于特别大的值，ntext类型和nvarchar(max)类型也支持Unicode字符。</p>
+<p>要返回扩展字符编码集中的字符，可以将字符编码传递给NCHAR()函数：</p>
+<p>SELECT NCHAR(220) </p>
+<p>返回字母ü。</p>
+<p>SELECT NCHAR(233) </p>
+<p>返回带重音符号的小写e：é。</p>
+<p>SELECT NCHAR(241) </p>
+<p>返回西班牙语的”enya”，或者带有发音符号的n：<a href="http://images.cnblogs.com/cnblogs_com/sunnycoder/WindowsLiveWriter/SQL_1373E/clip_image018_2.jpg" target="_blank" rel="noopener"><img src="https://images.cnblogs.com/cnblogs_com/sunnycoder/WindowsLiveWriter/SQL_1373E/clip_image018_thumb.jpg" alt="clip_image018"></a>。</p>
+<p>当然，ASCII标准也支持所有的欧洲字符，所以使用CHAR()函数也可以返回这些扩展字符。如果对256~65536之间的值使用CHAR()函数，返回值就很有趣了。例如，下面的查询返回希腊字符Ω：</p>
+<p>SELECT NCHAR(433) </p>
+<p>下面的查询返回西里尔字母Ya(Я)。</p>
+<p>SELECT NCHAR(1071)</p>
+<h4 id="REVERSE-函数"><a href="#REVERSE-函数" class="headerlink" title="REVERSE()函数"></a>REVERSE()函数</h4><p>顾名思义，这个函数用于将字符串中的字符颠倒过来。这在处理连接列表中的单个字符值时将会被用到。</p>
+<p>SELECT REVERSE(‘The stars near Mars are far from ours. ‘)</p>
+<p>结果为：.sruo morf raf era sraM raen srats ehT</p>
+<h3 id="数学函数"><a href="#数学函数" class="headerlink" title="数学函数"></a>数学函数</h3><p>下表中列出的函数用于执行多种普通与特殊的数学运算，可以执行代数、三角、统计、估算与财政运算等运算。</p>
+<table>
+<thead>
+<tr>
+<th><strong>函</strong> <strong>数</strong></th>
+<th><strong>说</strong> <strong>明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ABS()</td>
+<td>返回一个数的绝对值</td>
+</tr>
+<tr>
+<td>ACOS()</td>
+<td>计算一个角的反余弦值，以弧度表示</td>
+</tr>
+<tr>
+<td>ASIN()</td>
+<td>计算一个角的反正弦值，以弧度表示</td>
+</tr>
+<tr>
+<td>ATAN()</td>
+<td>计算一个角的反正切值，以弧度表示</td>
+</tr>
+<tr>
+<td>ATN2()</td>
+<td>计算两个值的反正切，以弧度表示</td>
+</tr>
+<tr>
+<td>CEILING()</td>
+<td>返回大于或等于一个数的最小整数</td>
+</tr>
+<tr>
+<td>COS()</td>
+<td>计算一个角的正弦值，以弧度表示</td>
+</tr>
+<tr>
+<td>COT()</td>
+<td>计算一个角的余切值，以弧度表示</td>
+</tr>
+<tr>
+<td>DEGREES()</td>
+<td>将一个角从弧度转换为角度</td>
+</tr>
+<tr>
+<td>EXP()</td>
+<td>指数运算</td>
+</tr>
+<tr>
+<td>FLOOR()</td>
+<td>返回小于或等于一个数的最大整数</td>
+</tr>
+<tr>
+<td>LOG()</td>
+<td>计算以2为底的自然对数</td>
+</tr>
+<tr>
+<td>LOG10()</td>
+<td>计算以10为底的自然对数</td>
+</tr>
+<tr>
+<td>PI()</td>
+<td>返回以浮点数表示的圆周率</td>
+</tr>
+<tr>
+<td>POWER()</td>
+<td>幂运算</td>
+</tr>
+<tr>
+<td>RADIANS()</td>
+<td>将一个角从角度转换为弧度</td>
+</tr>
+<tr>
+<td>RAND()</td>
+<td>返回以随机数算法算出的一个小数， 可以接收一个可选的种子值</td>
+</tr>
+<tr>
+<td>ROUND()</td>
+<td>对一个小数进行四舍五入运算， 使其具备特定的精度</td>
+</tr>
+<tr>
+<td>SIGN()</td>
+<td>根据参数是正还是负，返回–1或者1</td>
+</tr>
+<tr>
+<td>SIN()</td>
+<td>计算一个角的正弦值，以弧度表示</td>
+</tr>
+<tr>
+<td>SQRT()</td>
+<td>返回一个数的平方根</td>
+</tr>
+<tr>
+<td>SQUARE()</td>
+<td>返回一个数的平方</td>
+</tr>
+<tr>
+<td>TAN()</td>
+<td>计算一个角正切的值，以弧度表示</td>
+</tr>
+</tbody></table>
+<h3 id="时间函数-补充"><a href="#时间函数-补充" class="headerlink" title="时间函数(补充)"></a>时间函数(补充)</h3><h4 id="sleep"><a href="#sleep" class="headerlink" title="sleep()"></a>sleep()</h4><p>它可以让sql执行的时候sleep(pause)一段时间。用法(语法)：sleep（duration）,其中duration的单位是秒。</p>
+<pre class=" language-mysql"><code class="language-mysql">mysql> select sleep(3);
++----------+
+| sleep(3) |
++----------+
+|        0 |
++----------+
+1 row in set (3.00 sec)
+
+mysql> select*from SCHEMATA where  SCHEMA_NAME='test' ;
++--------------+-------------+----------------------------+------------------------+----------+
+| CATALOG_NAME | SCHEMA_NAME | DEFAULT_CHARACTER_SET_NAME | DEFAULT_COLLATION_NAME | SQL_PATH |
++--------------+-------------+----------------------------+------------------------+----------+
+| def          | test        | utf8                       | utf8_general_ci        | NULL     |
++--------------+-------------+----------------------------+------------------------+----------+
+1 row in set (0.00 sec)
+
+mysql> select*from SCHEMATA where  SCHEMA_NAME='test' and sleep(3);
+Empty set (3.00 sec)
+
+mysql> select 1=1 and sleep(1);
++------------------+
+| 1=1 and sleep(1) |
++------------------+
+|                0 |
++------------------+
+1 row in set (1.00 sec)
+#当前面为真时一起查询
+mysql> select 1=2 or  sleep(1);
++------------------+
+| 1=2 or  sleep(1) |
++------------------+
+|                0 |
++------------------+
+1 row in set (1.00 sec)
+#当前面为假时查询后面
+mysql> select 1=2 and  sleep(1);
++-------------------+
+| 1=2 and  sleep(1) |
++-------------------+
+|                 0 |
++-------------------+
+1 row in set (0.00 sec)
+#当前面为假时后边不能查询
+
+
+#可用||和&&代替or和and
+mysql> select 1=2 ||  sleep(1);
++------------------+
+| 1=2 ||  sleep(1) |
++------------------+
+|                0 |
++------------------+
+1 row in set (1.00 sec)
+
+mysql> select 1=2 &&  sleep(1);
++------------------+
+| 1=2 &&  sleep(1) |
++------------------+
+|                0 |
++------------------+
+1 row in set (0.00 sec)
+
+mysql> select 1=1 &&  sleep(1);
++------------------+
+| 1=1 &&  sleep(1) |
++------------------+
+|                0 |
++------------------+
+1 row in set (1.00 sec)</code></pre>
+<h2 id="3-扩展学习"><a href="#3-扩展学习" class="headerlink" title="3.扩展学习"></a>3.扩展学习</h2><h3 id="什么是UDF库？"><a href="#什么是UDF库？" class="headerlink" title="什么是UDF库？"></a><strong>什么是UDF库？</strong></h3><p>UDF表示的是MySQL中的用户自定义函数。这就像在DLL中编写自己的函数并在MySQL中调用它们一样。我们将使用“lib_mysqludf_sys_64.dll”DLL库，你可以在Metasploit框架中找到它。你可以使用基于系统架构的UDF库，它们在Metasploit的安装目录“/usr/share/metasploit-framework/data/exploits/mysql/”。<a href="https://github.com/rapid7/metasploit-framework/tree/master/data/exploits/mysql" target="_blank" rel="noopener">点击这里</a>查看下载。</p>
+<h3 id="存放dll文件注意事项"><a href="#存放dll文件注意事项" class="headerlink" title="存放dll文件注意事项"></a>存放dll文件注意事项</h3><blockquote>
+<p>==在此注意：本文不涉及通过注入，上传存放udf.dll文件，本文仅局限于物理途径测试，如有需要请移步<a href="https://www.freebuf.com/articles/system/163144.html" target="_blank" rel="noopener"><strong>上传二进制文件</strong></a>进行绕过上传==</p>
+</blockquote>
+<p>小于mysql5.1版本<br>C:\WINDOWS\udf.dll    或    C:\WINDOWS\system32\udf.dll<br>等于mysql5.1版本<br>%mysql%\plugin\udf.dll   用 select @@plugin_dir 查询plugin路径<br>默认 C:\Program Files\MySQL\MySQL Server 5.1\lib\plugin\udf.dll</p>
+<blockquote>
+<p>从MySQL 5.0.67开始，文件必须位于plugin目录中。该目录取决于plugin_dir系统变量的值。如果plugin_dir的值为空，则参照5.0.67之前即文件必须位于系统动态链接器的搜索目录中。</p>
+<p>从MySQL 4.1.25开始，文件必须位于plugin目录中。该目录取决于plugin_dir系统变量的值。如果plugin_dir的值为空，则参照4.1.25之前即文件必须位于系统动态链接器的搜索目录中。</p>
+</blockquote>
+<h4 id="使用NTFS-ADS流创建lib、plugin文件夹："><a href="#使用NTFS-ADS流创建lib、plugin文件夹：" class="headerlink" title="使用NTFS ADS流创建lib、plugin文件夹："></a>使用NTFS ADS流创建lib、plugin文件夹：</h4><blockquote>
+<pre class=" language-mysql"><code class="language-mysql">某些情况下，我们会遇到Can't open shared library的情况，这时就需要我们把udf.dll导出到lib\plugin目录下才可以，但是默认情况下plugin不存在，怎么办？ 还好有大牛研究出了利用NTFS ADS流来创建文件夹的方法
+select @@basedir;   //查找mysql的目录
+select 'It is dll' into dumpfile 'C:\\Program Files\\MySQL\\MySQL Server 5.1\\lib::$INDEX_ALLOCATION';    //使用NTFS ADS流创建lib目录
+select 'It is dll' into dumpfile 'C:\\Program Files\\MySQL\\MySQL Server 5.1\\lib\\plugin::$INDEX_ALLOCATION'; //利用NTFS ADS再次创建plugin目录执行成功以后再进行导出即可。</code></pre>
+</blockquote>
+<h3 id="查看路径"><a href="#查看路径" class="headerlink" title="查看路径"></a>查看路径</h3><pre class=" language-mysql"><code class="language-mysql">show variables like "%plugin%";
++---------------+-------------------------------------------+
+| Variable_name | Value                                     |
++---------------+-------------------------------------------+
+| plugin_dir    | D:\phpStudy\PHPTutorial\MySQL\lib\plugin\ |
++---------------+-------------------------------------------+
+1 row in set (0.00 sec)</code></pre>
+<h3 id="使用SQL语句创建自定义函数"><a href="#使用SQL语句创建自定义函数" class="headerlink" title="使用SQL语句创建自定义函数"></a>使用SQL语句创建自定义函数</h3><p>Create Function 函数名 returns string soname ‘导出的DLL路径’;<br> 例如： Create Function sys_eval returns string soname ‘udf.dll’;</p>
+<p><img src="D:%5CoCam%EF%BC%88%E5%BD%95%E5%B1%8F%EF%BC%89%5CSnipaste-2.2.1-Beta2-x64%5C1%E5%9B%BE%E7%89%87%5CSnipaste_2019-08-29_18-21-49.png" alt=""></p>
+<h4 id="查看当前函数库情况"><a href="#查看当前函数库情况" class="headerlink" title="查看当前函数库情况"></a>查看当前函数库情况</h4><p><img src="D:%5CoCam%EF%BC%88%E5%BD%95%E5%B1%8F%EF%BC%89%5CSnipaste-2.2.1-Beta2-x64%5C1%E5%9B%BE%E7%89%87%5CSnipaste_2019-08-29_18-23-39.png" alt=""></p>
+<h4 id="删除语法"><a href="#删除语法" class="headerlink" title="删除语法"></a>删除语法</h4><pre class=" language-mysql"><code class="language-mysql">drop function sys_eval;</code></pre>
+<h3 id="DLL探索"><a href="#DLL探索" class="headerlink" title="DLL探索"></a><strong>DLL探索</strong></h3><p>在网上我翻阅了不少的资料，但大多都只介绍了Metasploit内部这个DLL中的’sys_exec’函数。那么除了这个函数之外，其它的函数是否也能为我们所用？通过导出该目录，我发现作者也写了许多其它非常实用的函数。如下所示：</p>
+<p>![](C:\Users\lenovo\Pictures\Saved Pictures\15193509445657.png!small.jpg)</p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>1.本次提权测试都是我直接在物理路径下直接存放文件</p>
+<p>2.在使用dll文件中执行create function cmdshell returns string soname ‘udf.dll’; 不断返回Can’t find symbol ‘cmdshell’ in library本人未能找到原因和有效解决文体方法。不过一老哥通过sqlmap的dll实现了cmdshell 函数创建。</p>
+<p>3.在使用dll文件时需注检查自己操作系统位数，获取对应的位数的dll文件。</p>
+<p>4.我也有添加udf<img src="file:///C:%5CUsers%5Clenovo%5CAppData%5CLocal%5CTemp%5CSGPicFaceTpBq%5C15988%5C09FC851D.png" alt="img"></p>
+<p>测试udf.dll，但是在网上找的马“太野”总是不能正常回返信息</p>
+<p>5.关于数据库函数问题，我在前两次的报告写得很详细，这里就补充之前没测试的。</p>
+
             </div>
             <hr/>
 
@@ -470,7 +723,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://Lu-sakura.github.io/Lu-sakura.github.io/friends/index-1.html">https://Lu-sakura.github.io/Lu-sakura.github.io/friends/index-1.html</a>
+                    <a href="https://Lu-sakura.github.io/Lu-sakura.github.io/2019/12/15/11123/">https://Lu-sakura.github.io/Lu-sakura.github.io/2019/12/15/11123/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -507,7 +760,11 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">No tag</span>
+                            
+                                <a href="/Lu-sakura.github.io/tags/%E6%98%8E%E5%A4%A9/">
+                                    <span class="chip bg-color">明天</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -671,30 +928,29 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;Current
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/Lu-sakura.github.io/friends/index-1.html">
+                <a href="/Lu-sakura.github.io/2019/12/15/mysql/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="friends">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="mysql">
                         
-                        <span class="card-title">friends</span>
+                        <span class="card-title">mysql</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            一、认识SQL什么是关系型数据库？行与列表关系型数据库常用的关系型数据库：、、2.是一种，可以是文档或键值等。Hbase()redis,MemcacheDB()MongoDB(型。关系型数据库与非关系型数据库的区别：非关系数据库的数据存储在
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-15
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2019-12-15
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -703,7 +959,14 @@
                         </span>
                     </div>
                 </div>
-
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/Lu-sakura.github.io/tags/mysql/">
+                        <span class="chip bg-color">mysql</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>
@@ -711,27 +974,27 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                Current&nbsp;<i class="far fa-dot-circle"></i>
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/Lu-sakura.github.io/friends/index-1.html">
+                <a href="/Lu-sakura.github.io/2019/12/11/hello-world/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="friends">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
                         
-                        <span class="card-title">friends</span>
+                        <span class="card-title">Hello World</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-15
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-11
                             </span>
                         <span class="publish-author">
                             
@@ -741,7 +1004,6 @@
                         </span>
                     </div>
                 </div>
-
                 
             </div>
         </div>

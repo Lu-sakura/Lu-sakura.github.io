@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://lu-sakura.github.io/"/>
-  <updated>2019-12-11T11:41:04.258Z</updated>
+  <updated>2019-12-17T09:36:32.291Z</updated>
   <id>https://lu-sakura.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>matery使用指南</title>
+    <link href="https://lu-sakura.github.io/2019/12/17/readme-cn/"/>
+    <id>https://lu-sakura.github.io/2019/12/17/readme-cn/</id>
+    <published>2019-12-17T09:30:29.394Z</published>
+    <updated>2019-12-17T09:36:32.291Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;hexo-theme-matery&quot;&gt;&lt;a href=&quot;#hexo-theme-matery&quot; class=&quot;headerlink&quot; title=&quot;hexo-theme-matery&quot;&gt;&lt;/a&gt;hexo-theme-matery&lt;/h1&gt;&lt;p&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="matery使用指南" scheme="https://Lu-sakura.github.io/tags/matery%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/"/>
+    
+  </entry>
   
   <entry>
     <title>Hello World</title>

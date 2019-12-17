@@ -438,14 +438,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    3k
+                    0
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
-                    10 Min
+                    1 Min
                 </div>
                 
 				
@@ -461,83 +461,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>[TOC]</p>
-<h1 id="CTF简介"><a href="#CTF简介" class="headerlink" title="CTF简介"></a>CTF简介</h1><p>CTF（Capture The Flag）中文一般译作夺旗赛，在网络安全领域中指的是网络安全技术人员之间进行技术竞技的一种比赛形式。CTF起源于1996年DEFCON全球黑客大会，以代替之前黑客们通过互相发起真实攻击进行技术比拼的方式。发展至今，已经成为全球范围网络安全圈流行的竞赛形式，2013年全球举办了超过五十场国际性CTF赛事。而DEFCON作为CTF赛制的发源地，DEFCON CTF也成为了目前全球最高技术水平和影响力的CTF竞赛，类似于CTF赛场中的“世界杯” 。</p>
-<h2 id="CTF竞赛模式"><a href="#CTF竞赛模式" class="headerlink" title="CTF竞赛模式"></a>CTF竞赛模式</h2><p><strong>（1）解题模式（Jeopardy）</strong>在解题模式CTF赛制中，参赛队伍可以通过互联网或者现场网络参与，这种模式的CTF竞赛与ACM编程竞赛、信息学奥赛比较类似，以解决网络安全技术挑战题目的分值和时间来排名，通常用于在线选拔赛。题目主要包含逆向、漏洞挖掘与利用、Web渗透、密码、取证、隐写、安全编程等类别。</p>
-<p><strong>（2）攻防模式（Attack-Defense）</strong>在攻防模式CTF赛制中，参赛队伍在网络空间互相进行攻击和防守，挖掘网络服务漏洞并攻击对手服务来得分，修补自身服务漏洞进行防御来避免丢分。攻防模式CTF赛制可以实时通过得分反映出比赛情况，最终也以得分直接分出胜负，是一种竞争激烈，具有很强观赏性和高度透明性的网络安全赛制。在这种赛制中，不仅仅是比参赛队员的智力和技术，也比体力（因为比赛一般都会持续48小时及以上），同时也比团队之间的分工配合与合作。<br><strong>（**</strong>3）混合模式（Mix**）结合了解题模式与攻防模式的CTF赛制，比如参赛队伍通过解题可以获取一些初始分数，然后通过攻防对抗进行得分增减的零和游戏，最终以得分高低分出胜负。采用混合模式CTF赛制的典型代表如iCTF国际CTF竞赛。<br>CTF各大题型简介</p>
-<h4 id="MISC（安全杂项）："><a href="#MISC（安全杂项）：" class="headerlink" title="MISC（安全杂项）："></a>MISC（安全杂项）：</h4><p>全称Miscellaneous。题目涉及流量分析、电子取证、人肉搜索、数据分析、大数据统计等等，覆盖面比较广。我们平时看到的社工类题目；给你一个流量包让你分析的题目；取证分析题目，都属于这类题目。主要考查参赛选手的各种基础综合知识，考察范围比较广。</p>
-<h4 id="PPC（编程类）："><a href="#PPC（编程类）：" class="headerlink" title="PPC（编程类）："></a>PPC（编程类）：</h4><p>全称Professionally Program Coder。题目涉及到程序编写、编程算法实现。算法的逆向编写，批量处理等，有时候用编程去处理问题，会方便的多。当然PPC相比ACM来说，还是较为容易的。至于编程语言嘛，推荐使用Python来尝试。这部分主要考察选手的快速编程能力。</p>
-<h4 id="CRYPTO（密码学）："><a href="#CRYPTO（密码学）：" class="headerlink" title="CRYPTO（密码学）："></a>CRYPTO（密码学）：</h4><p>全称Cryptography。题目考察各种加解密技术，包括古典加密技术、现代加密技术甚至出题者自创加密技术。实验吧“角斗场”中，这样的题目汇集的最多。这部分主要考查参赛选手密码学相关知识点。</p>
-<h4 id="REVERSE（逆向）："><a href="#REVERSE（逆向）：" class="headerlink" title="REVERSE（逆向）："></a>REVERSE（逆向）：</h4><p>全称reverse。题目涉及到软件逆向、破解技术等，要求有较强的反汇编、反编译扎实功底。需要掌握汇编，堆栈、寄存器方面的知识。有好的逻辑思维能力。主要考查参赛选手的逆向分析能力。此类题目也是线下比赛的考察重点。</p>
-<h4 id="STEGA（隐写）："><a href="#STEGA（隐写）：" class="headerlink" title="STEGA（隐写）："></a>STEGA（隐写）：</h4><p>全称Steganography。隐写术是我开始接触CTF觉得比较神奇的一类，知道这个东西的时候感觉好神奇啊，黑客们真是聪明。题目的Flag会隐藏到图片、音频、视频等各类数据载体中供参赛选手获取。载体就是图片、音频、视频等，可能是修改了这些载体来隐藏flag，也可能将flag隐藏在这些载体的二进制空白位置。有时候需要你侦探精神足够的强，才能发现。此类题目主要考查参赛选手的对各种隐写工具、隐写算法的熟悉程度。实验吧“角斗场”的隐写题目在我看来是比较全的，以上说到的都有涵盖。新手盆友们可以去了解下。</p>
-<h4 id="PWN（溢出）："><a href="#PWN（溢出）：" class="headerlink" title="PWN（溢出）："></a>PWN（溢出）：</h4><p>PWN在黑客俚语中代表着攻破，取得权限，在CTF比赛中它代表着溢出类的题目，其中常见类型溢出漏洞有栈溢出、堆溢出。在CTF比赛中，线上比赛会有，但是比例不会太重，进入线下比赛，逆向和溢出则是战队实力的关键。主要考察参数选手漏洞挖掘和利用能力。</p>
-<h4 id="WEB（web类）："><a href="#WEB（web类）：" class="headerlink" title="WEB（web类）："></a>WEB（web类）：</h4><p>WEB应用在今天越来越广泛，也是CTF夺旗竞赛中的主要题型，题目涉及到常见的Web漏洞，诸如注入、XSS、文件包含、代码审计、上传等漏洞。这些题目都不是简单的注入、上传题目，至少会有一层的安全过滤，需要选手想办法绕过。且Web题目是国内比较多也是大家比较喜欢的题目。因为大多数人开始安全都是从web日站开始的。<br><img src="https://img-blog.csdn.net/2018040123152435?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0ZseV9ocHM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="img"></p>
-<p>学之前的思考：分析赛题情况</p>
-<h4 id="PWN、Reserve偏重对汇编、逆向的理解"><a href="#PWN、Reserve偏重对汇编、逆向的理解" class="headerlink" title="PWN、Reserve偏重对汇编、逆向的理解"></a>PWN、Reserve偏重对汇编、逆向的理解</h4><h4 id="Crypto偏重对数学、算法的深入学习"><a href="#Crypto偏重对数学、算法的深入学习" class="headerlink" title="Crypto偏重对数学、算法的深入学习"></a>Crypto偏重对数学、算法的深入学习</h4><h4 id="Web编程对技巧沉淀、快速搜索能力的挑战"><a href="#Web编程对技巧沉淀、快速搜索能力的挑战" class="headerlink" title="Web编程对技巧沉淀、快速搜索能力的挑战"></a>Web编程对技巧沉淀、快速搜索能力的挑战</h4><h4 id="Misc则更为复杂，所有与计算机安全挑战有关的都算在其中"><a href="#Misc则更为复杂，所有与计算机安全挑战有关的都算在其中" class="headerlink" title="Misc则更为复杂，所有与计算机安全挑战有关的都算在其中"></a>Misc则更为复杂，所有与计算机安全挑战有关的都算在其中</h4><p>常规做法</p>
-<p>A方向：PWN+Reserver+Crypto随机搭配</p>
-<p>B方向：Web+Misc组合</p>
-<p>其实Misc所有人都可以做<br>恶补基础知识&amp;信息安全专业知识</p>
-<p>推荐图书：</p>
-<p>A方向：</p>
-<p>RE for Beginners（逆向工程入门）</p>
-<p>IDA Pro权威指南</p>
-<p>揭秘家庭路由器0day漏洞挖掘技术</p>
-<p>自己动手写操作系统</p>
-<p>黑客攻防宝典：系统实战篇</p>
-<p>B方向：</p>
-<p>Web应用安全权威指南</p>
-<p>Web前端黑客技术揭秘</p>
-<p>黑客秘籍——渗透测试使用指南</p>
-<p>黑客攻防宝典WEB实战篇</p>
-<p>代码审计：企业级Web代码安全架构<br>从基础题目出发</p>
-<p><strong>入门需要哪些基础：</strong></p>
-<p>1.编程语言基础（c、汇编、脚本语言）<br>2.数学基础（算法、密码学）<br>3.脑洞大开（天马行空的想象、推理解密）<br>4.体力耐力（通宵熬夜）</p>
-<p><strong>如何入门学</strong></p>
-<p>1.恶补基础知识<br>2.尝试从脑洞开始 如黑客game<br>3.从基础题出发 一般都是100，200，最高分在500，600 先把100分的学好，可从实践，高中的ctf学起，比较简单，只涉及1，2个点<br>4.学信息安全专业知识<br>5.锻炼体力耐力 周六日都有比赛</p>
-<p><strong>到底如何学？</strong></p>
-<p>1.分析赛题情况<br>2.分析自身能力 自己最适合哪个方向<br>3.选择更适合的入手</p>
-<p>分析赛题</p>
-<p>PWN、Reverse偏重对汇编、逆向的理解 对底层理解<br>Crypto偏重对数学、算法的深入学习 密码课要深入学<br>Web偏重对技巧沉淀、快速搜索能力的挑战 发散思维，对底层只需要了解，代码原理，关于漏洞点的积累<br>Misc则更复杂，所有与计算机安全挑战有关的都在其中 隐写，图片数据分析还原，流量，大数据，对游戏分析逆向</p>
-<p><strong>常规做法：</strong></p>
-<p>A方向：PWN+Reverse+Crypto随机搭配<br>B方向：Web+Misc组合<br>Misc所有人都可以做</p>
-<p><strong>入门知识：</strong></p>
-<p>都要学的内容：linux基础、计算机组成原理、操作系统原理、网络协议分析</p>
-<p>A方向：IDA工具使用（fs插件）、逆向工程、密码学、缓冲区溢出等<br>B方向：Web安全、网络安全、内网渗透、数据库安全等 前10的安全漏洞</p>
-<p><strong>推荐书：</strong></p>
-<p>A方向：</p>
-<p>RE for Beginners<br>IDA Pro权威指南<br>揭秘家庭路由器0day漏洞挖掘技术<br>自己定操作系统<br>黑客攻防技术宝典：系统实战篇 有各种系统的逆向讲解</p>
-<p>B方向：</p>
-<p>Web应用安全权威指南 最推荐小白，宏观web安全<br>Web前端黑客技术揭秘<br>黑客秘籍——渗透测试实用指南<br>黑客攻防技术宝典 web实战篇 web安全的所有核心基础点，有挑战性，最常规，最全，学好会直线上升<br>代码审计：企业级web代码安全架构</p>
-<p><strong>入门–以练促赛，以赛养练</strong></p>
-<p>选择一场已经存在writeup的比赛</p>
-<p>总结解题过程，分析出题人想法</p>
-<p>参加一场最新的ctf比赛<br>https：//ctftime.org/ 国际比赛，有很多基础的<br>http：//<a href="http://www.xctf.org.cn/" target="_blank" rel="noopener">www.xctf.org.cn/</a> 国内比赛，比较难</p>
-<p><strong>组建团队—强力成员画像</strong></p>
-<p>1.思维跳跃：灵活性，不会钻墙脚<br>2.专注：遇到问题不放弃直到解决<br>3.耐力：连续一天研究技术<br>4.团队精神：责任、凝聚、分享</p>
-<p>有3条为强力成员，有4条会成为强力队长！</p>
-<p><strong>组队问题：</strong><br>新人招募、队员培养、梯队有序、纪律严格</p>
-<ul>
-<li>web：<br> 1：先去大概了解一下html，php和sql的相关知识，熟悉一下语言。推荐W3cschool<br> 2：了解http包的组成部分<br> 2：接着你需要一个可以抓包的工具（Burpsuite）工具自行百度，需要JAVA环境。<br> 3：当然，浏览器也很重要，这里推荐web狗专用firefox浏览器，保证你用了之后题题出flag！（火狐需要自行下载插件，这五个插件用的比较多可以自己去下载1.Firebug<br> 2.Hackbar 3.HostAdmin 4.UserAgent Switcher 5.Modify Headers（工具使用方法可以先自己百度下）<br> 4：现在就需要一个可以编辑和看代码的软件,一个是Notpad,一个是Sublime,根据喜好自行选择。</li>
-<li>逆向： 逆向我也懂的不多，说说我觉得重要的吧，仅供参考：<br> 1.首先的首先必须得掌握基本的编程能力，之后就是学习相对底层的【汇编语言】<br> 2.对不同的调试工具例如windbg，ollydbg，ida熟练的调试与使用（逻辑思维能力要强）<br> 3.掌握外壳原理和技巧，遇到加密程序时能进行脱壳与解密处理（学长讲的的汇编题就属于解密）<br> 4.经常逛各大论坛：吾爱破解，看雪论坛，发现新姿势<br> 这里推荐吾爱破解的入门教程：<a href="https://www.52pojie.cn/thread-349073-1-1.html" target="_blank" rel="noopener">https://www.52pojie.cn/thread-349073-1-1.html</a></li>
-<li>pwn（最难的部分）：<br> 1.shell的基本语法<br> 2.kali下各种渗透工具的使用<br> 3.熟练掌握逆向方面的知识<br> 4.不断的摸索…（我也不知道接下来该怎么办…）</li>
-<li>misc： 无限的脑洞！分为很多类隐写：<br> 1.图片隐写：stegsolve对图片进行分析，winhex找隐藏信息，lsb隐写，ntfs文件流，图种，二维码等等等等…<br> 2.音频隐写：mp3stego分离MP3中的隐藏文件，audacity分析等等等等…<br> 3.压缩包隐写：伪加密，明文攻击，暴力破解等等等等…<br> 4…等等…</li>
-<li>密码学（其实并不难）：<br> 1.阅读各种加密模式，查阅资料，掌握加密原理<br> 2.能快速识别各种加密的特征</li>
-</ul>
-<p>i春秋训练平台：<a href="https://www.ichunqiu.com/battalion" target="_blank" rel="noopener">https://www.ichunqiu.com/battalion</a><br><img src="https://img-blog.csdn.net/20180401232538377?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0ZseV9ocHM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="img"></p>
-<p>We Chall:   <a href="http://www.wechall.net/sites.php![img](https://img-blog.csdn.net/20180401234254568?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0ZseV9ocHM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)" target="_blank" rel="noopener">http://www.wechall.net/sites.php![img](https://img-blog.csdn.net/20180401234254568?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0ZseV9ocHM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)</a></p>
-<p>很炫酷游戏化————<a href="https://microcorruption.com/login" target="_blank" rel="noopener">https://microcorruption.com/login</a></p>
-<p><img src="https://img-blog.csdn.net/20180401234758593?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0ZseV9ocHM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="img"></p>
-<p><a href="http://smashthestack.org/" target="_blank" rel="noopener">http://smashthestack.org/</a></p>
-<p><img src="https://img-blog.csdn.net/20180401234921941?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0ZseV9ocHM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="img"></p>
-<p><a href="http://overthewire.org/wargames/" target="_blank" rel="noopener">http://overthewire.org/wargames/</a></p>
-<p><img src="https://img-blog.csdn.net/20180401235051229?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0ZseV9ocHM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="img"></p>
-<p><a href="https://exploit-exercises.com/**（A方向）" target="_blank" rel="noopener">https://exploit-exercises.com/**（A方向）</a>**</p>
-<p><strong><img src="https://img-blog.csdn.net/20180401235219126?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0ZseV9ocHM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="img"></strong></p>
-<p>工具集：</p>
-<p><a href="https://github.com/P1kachu/v0lt" target="_blank" rel="noopener">https://github.com/P1kachu/v0lt</a></p>
-<p><a href="https://github.com/truongkma/ctf-tools" target="_blank" rel="noopener">https://github.com/truongkma/ctf-tools</a></p>
-<p><a href="https://github.com/zardus/ctf-tools" target="_blank" rel="noopener">https://github.com/zardus/ctf-tools</a></p>
-<p>**</p>
+                <p><img src="https://raw.githubusercontent.com/Lu-sakura/images/master/bolg_file/images/picgo-github5df672edd6a555cc34fe82f01dd16cac.jpg" alt="img">)<img src="https://raw.githubusercontent.com/Lu-sakura/images/master/bolg_file/images/picgo-github5df672edd6a555cc34fe82f01dd16cac.jpg" alt="img">)<img src="https://raw.githubusercontent.com/Lu-sakura/images/master/bolg_file/images/picgo-github20191216235252.png" alt="img">)<img src="https://raw.githubusercontent.com/Lu-sakura/images/master/bolg_file/images/picgo-github20191216235137.png" alt="img">)<img src="https://raw.githubusercontent.com/Lu-sakura/images/master/bolg_file/images/picgo-github5a74b236650ccadb3ee2d583cbe4ab15.jpg" alt="img">)<img src="https://raw.githubusercontent.com/Lu-sakura/images/master/bolg_file/images/picgo-github054292370fb62b196629178d53960bcd.jpg" alt="img"></p>
 
             </div>
             <hr/>
@@ -563,7 +487,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://Lu-sakura.github.io/2019/12/17/ctf-jian-jie/">https://Lu-sakura.github.io/2019/12/17/ctf-jian-jie/</a>
+                    <a href="https://Lu-sakura.github.io/2019/12/17/wei-ming-ming/">https://Lu-sakura.github.io/2019/12/17/wei-ming-ming/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -768,10 +692,9 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;Current
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
                 <a href="/2019/12/17/ctf-jian-jie/">
                     <div class="card-image">
@@ -789,9 +712,9 @@
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-17
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2019-12-17
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -804,7 +727,6 @@
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
@@ -823,44 +745,32 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/12/17/wei-ming-ming/">
+                <a href="/2019/12/11/hello-world/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="CTF简介">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
                         
-                        <span class="card-title">CTF简介</span>
+                        <span class="card-title">Hello World</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            CTF简介
+                            Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-17
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-11
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/CTF/" class="post-category">
-                                    CTF
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            Lu-sakura
                             
                         </span>
                     </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/CTF%E7%AE%80%E4%BB%8B/">
-                        <span class="chip bg-color">CTF简介</span>
-                    </a>
-                    
                 </div>
                 
             </div>

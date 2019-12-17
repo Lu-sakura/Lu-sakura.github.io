@@ -3,10 +3,10 @@
   <title>Lu-sakura</title>
   
   <subtitle>欢迎来到Lu-sakura的博客</subtitle>
-  <link href="/Lu-sakura.github.io/atom.xml" rel="self"/>
+  <link href="/atom.xml" rel="self"/>
   
   <link href="https://lu-sakura.github.io/"/>
-  <updated>2019-12-16T07:54:46.169Z</updated>
+  <updated>2019-12-17T03:39:15.480Z</updated>
   <id>https://lu-sakura.github.io/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>mysql</title>
-    <link href="https://lu-sakura.github.io/2019/12/15/mysql/"/>
-    <id>https://lu-sakura.github.io/2019/12/15/mysql/</id>
-    <published>2019-12-15T15:55:15.000Z</published>
-    <updated>2019-12-16T07:54:46.169Z</updated>
+    <title>CTF简介</title>
+    <link href="https://lu-sakura.github.io/2019/12/17/ctf-jian-jie/"/>
+    <id>https://lu-sakura.github.io/2019/12/17/ctf-jian-jie/</id>
+    <published>2019-12-17T03:35:15.000Z</published>
+    <updated>2019-12-17T03:39:15.480Z</updated>
     
     <summary type="html">
     
@@ -29,41 +29,33 @@
       
         
         
-          &lt;p&gt;一、认识SQL什么是关系型数据库？行与列表关系型数据库常用的关系型数据库：、、2.是一种，可以是文档或键值等。Hbase()redis,MemcacheDB()MongoDB(型。关系型数据库与非关系型数据库的区别：非关系数据库的数据存储在内存中，关系数据库的数据存储在硬盘
+          &lt;p&gt;[TOC]&lt;/p&gt;
+&lt;h1 id=&quot;CTF简介&quot;&gt;&lt;a href=&quot;#CTF简介&quot; class=&quot;headerlink&quot; title=&quot;CTF简介&quot;&gt;&lt;/a&gt;CTF简介&lt;/h1&gt;&lt;p&gt;CTF（Capture The
         
       
     
     </summary>
     
     
+      <category term="CTF" scheme="https://Lu-sakura.github.io/categories/CTF/"/>
     
-      <category term="mysql" scheme="https://Lu-sakura.github.io/tags/mysql/"/>
+    
+      <category term="CTF简介" scheme="https://Lu-sakura.github.io/tags/CTF%E7%AE%80%E4%BB%8B/"/>
     
   </entry>
   
   <entry>
     <title>1</title>
-    <link href="https://lu-sakura.github.io/2019/12/15/11123/"/>
-    <id>https://lu-sakura.github.io/2019/12/15/11123/</id>
-    <published>2019-12-15T15:40:39.000Z</published>
-    <updated>2019-12-16T07:58:13.954Z</updated>
+    <link href="https://lu-sakura.github.io/2019/12/17/1/"/>
+    <id>https://lu-sakura.github.io/2019/12/17/1/</id>
+    <published>2019-12-17T03:35:15.000Z</published>
+    <updated>2019-12-17T03:35:15.646Z</updated>
     
     <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;第四周-数据库系统功能相关学习&quot;&gt;&lt;a href=&quot;#第四周-数据库系统功能相关学习&quot; class=&quot;headerlink&quot; title=&quot;第四周-数据库系统功能相关学习&quot;&gt;&lt;/a&gt;第四周-数据库系统功能相关学习&lt;/h1&gt;&lt;p&gt;[TOC]&lt;/p&gt;
-&lt;h2
-        
-      
     
     </summary>
     
     
-    
-      <category term="明天" scheme="https://Lu-sakura.github.io/tags/%E6%98%8E%E5%A4%A9/"/>
     
   </entry>
   

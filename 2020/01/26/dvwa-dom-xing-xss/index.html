@@ -1,0 +1,1302 @@
+<!DOCTYPE HTML>
+<html lang="zh_CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="XSS DVWA">
+    <meta name="description" content="DVWA_DOM 型 XSS什么是DOM_XSS什么是DOMDOM(Document Object Model)即文档对象模型， 定义了访问HTML和XML文档的标准。
+DOM 是 W3C（万维网联盟）的标准。DOM 定义了访问 HTML ">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>DOM_XSS_简介 | Lu-sakura</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    
+    <script src="/libs/jquery/jquery.min.js"></script>
+    
+<meta name="generator" content="Hexo 4.1.0"><link rel="alternate" href="/atom.xml" title="Lu-sakura" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper head-container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Lu-sakura</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>主页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>档案</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友链</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Lu-sakura</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			主页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			档案
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友链
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">DOM_XSS_简介</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/DVWA-XSS-DOM/">
+                                <span class="chip bg-color">DVWA_XSS_DOM</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
+                    2020-01-26
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
+                    2.9k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
+                    11 Min
+                </div>
+                
+				
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>Read Count:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+            
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="DVWA-DOM-型-XSS"><a href="#DVWA-DOM-型-XSS" class="headerlink" title="DVWA_DOM 型 XSS"></a>DVWA_DOM 型 XSS</h1><h2 id="什么是DOM-XSS"><a href="#什么是DOM-XSS" class="headerlink" title="什么是DOM_XSS"></a>什么是DOM_XSS</h2><h3 id="什么是DOM"><a href="#什么是DOM" class="headerlink" title="什么是DOM"></a>什么是DOM</h3><p><strong>DOM</strong>(Document Object Model)<strong>即文档对象模型， 定义了访问HTML和XML文档的标准。</strong></p>
+<p>DOM 是 W3C（万维网联盟）的标准。DOM 定义了访问 HTML 和 XML 文档的标准：</p>
+<blockquote>
+<p>W3C 文档对象模型 （DOM） 是中立于平台和语言的接口，它允许程序和脚本动态地访问和更新文档的内容、结构和样式。</p>
+</blockquote>
+<p>W3C DOM 标准被分为 3 个不同的部分：</p>
+<ul>
+<li>核心 DOM - 针对任何结构化文档的标准模型</li>
+<li>XML DOM - 针对 XML 文档的标准模型</li>
+<li>HTML DOM - 针对 HTML 文档的标准模型</li>
+</ul>
+<h4 id="DOM基本功能："><a href="#DOM基本功能：" class="headerlink" title="DOM基本功能："></a><strong>DOM基本功能：</strong></h4><p>① 查询某个元素<br>② 查询某个元素的祖先、兄弟以及后代元素<br>③ 获取、修改元素的属性<br>④ 获取、修改元素的内容<br>⑤ 创建、插入和删除元素</p>
+<h4 id="这里我提几句DOM树吧，稍微了解了解"><a href="#这里我提几句DOM树吧，稍微了解了解" class="headerlink" title="这里我提几句DOM树吧，稍微了解了解"></a>这里我提几句DOM树吧，稍微了解了解</h4><p><img src="https://raw.githubusercontent.com/Lu-sakura/images/master/bolg_file/images/picgo-githubSnipaste_2020-02-07_19-26-49.png" alt></p>
+<p>HTML DOM 定义了用于 HTML 的一系列标准的对象，以及访问和处理 HTML 文档的标准方法。<br>通过 DOM，可以访问所有的 HTML 元素，连同它们所包含的文本和属性。可以对其中的内容进行修改和删除，同时也可以创建新的元素。HTML DOM 独立于平台和编程语言。它可被任何编程语言诸如 Java、JavaScript 和 VBScript 使用。</p>
+<h4 id="JS-和DOM有什么联系"><a href="#JS-和DOM有什么联系" class="headerlink" title="JS 和DOM有什么联系"></a>JS 和DOM有什么联系</h4><p> <strong>js是代码，html是标记语言</strong></p>
+<p>想要做成动态页面，肯定要用到js了，管你是vue还是ng还是什么的。<br>DOM的妙处在于：它能够在所有浏览器上提供一种一致的方式，通过代码访问HTML的结构和内容。</p>
+<ol>
+<li><p>在浏览器加载一个页面时，浏览器会解析HTML，并创建文档的一个内部模型，其中包含HTML标记的所有元素，自上而下解析，遇到JavaScript浏览器会检查它的正确性，然后执行代码。</p>
+</li>
+<li><p>JavaScript继续执行，使用DOM检查页面、完成修改、从页面接受事件，或者要求浏览器从Web服务器获取其它数据<br>注：document是一个反映HTML的对象，通过调用document的方法改变DOM的状态，也就是改变HTML页面</p>
+</li>
+<li><p>JavaScript修改了DOM时，浏览器会随着动态更新页面。<br>DOM就是一张映射表啦，记录着一堆用代码操控document时的规章制度，直白点说，就是js操作html时的API</p>
+</li>
+</ol>
+<p><strong>关于DOM我就介绍到这里，如果你有兴趣可以看<a href="https://www.jb51.net/article/25107.htm" target="_blank" rel="noopener">这里有个比较快速了解DOM应用的文章</a></strong></p>
+<p><strong>如果你想详细了解那就可以在这里看看的<a href="https://www.w3school.com.cn/htmldom/dom_intro.asp" target="_blank" rel="noopener">详细DOM介绍</a></strong></p>
+<h3 id="关于DOM-XSS攻击"><a href="#关于DOM-XSS攻击" class="headerlink" title="关于DOM_XSS攻击"></a>关于DOM_XSS攻击</h3><p>客户端的脚本程序可以通过DOM动态检查和修改页面内容。它不依赖于提交数据到服务器端，而从客户端获得DOM中的数据在本地执行。如果DOM中的数据没有经过严格确认，就会被注入攻击。</p>
+<p>XSS(DOM)是一种基于DOM树的一种代码注入攻击方式，可以是反射型的，也可以是存储型的，所以它一直被划分第三种XSS</p>
+<p>与前两种XSS相比，它最大的特点就是不与后台服务器交互，只是通过浏览器的DOM树解析产生。</p>
+<h4 id="DOM型哪些类型易产生XSS"><a href="#DOM型哪些类型易产生XSS" class="headerlink" title="DOM型哪些类型易产生XSS"></a>DOM型哪些类型易产生XSS</h4><p>DOM型XSS攻击是DOM的一种攻击。DOM是一个与平台、编程语言无关的接口，它允许程序或脚本动态地访问和更新文档内容、结构和样式，处理后的结果能够成为显示页面的一部分。DOM中有很多对象，其中一些是用户可以操纵的，例如：</p>
+<ul>
+<li>document.referer</li>
+<li>window. name</li>
+<li>location</li>
+<li>innerHTML</li>
+<li>documen.write</li>
+<li>document.write()</li>
+<li>xxx.outerHTML</li>
+<li>innerHTML.replace</li>
+<li>document.attachEvent()</li>
+<li>window.attachEvent()</li>
+<li>document.location.replace()</li>
+<li>document.location.assign()</li>
+</ul>
+<p><a href="https://www.jianshu.com/p/66870ab5fc10" target="_blank" rel="noopener">更多攻击方式及思路</a></p>
+<h2 id="DVWA-DOM-XSS-讲解"><a href="#DVWA-DOM-XSS-讲解" class="headerlink" title="DVWA_DOM_XSS  讲解"></a>DVWA_DOM_XSS  讲解</h2><h3 id="LOW级别"><a href="#LOW级别" class="headerlink" title="LOW级别"></a>LOW级别</h3><p>现在我们来看low级别的DOM型XSS攻击<br>界面如下</p>
+<p><img src="https://raw.githubusercontent.com/Lu-sakura/images/master/bolg_file/images/picgo-githubSnipaste_2020-02-07_20-03-30.png" alt></p>
+<p><img src="https://raw.githubusercontent.com/Lu-sakura/images/master/bolg_file/images/picgo-githubSnipaste_2020-02-07_20-05-02.png" alt></p>
+<p>我们发现我们的选择被传到URL中，那么我们直接在<code>?default=</code>后边直接加上xss攻击的payload会怎样呢？那我们来试试以下吧，payload如下</p>
+<pre class=" language-javascript"><code class="language-javascript">#直接拼接在URL中的<span class="token operator">?</span><span class="token keyword">default</span><span class="token operator">=</span>后面
+<span class="token operator">&lt;</span>script<span class="token operator">></span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'hack'</span><span class="token punctuation">)</span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span></code></pre>
+<p>发现弹窗了，成功执行了我们的payload</p>
+<p><img src="https://raw.githubusercontent.com/Lu-sakura/images/master/bolg_file/images/picgo-githubSnipaste_2020-02-07_20-12-45.png" alt></p>
+<p><strong>这么简单？？？</strong></p>
+<p><strong>我还没开始我的表演就结束了？？？</strong></p>
+<p><strong>我不服，我不甘心，我要开始我的表演。对，我要开始表演了。啊呜<del>啊呜呜</del></strong></p>
+<p>我们日常F12审查以下源码吧，看看有没有惊喜。</p>
+<p>在源码里发现有DOM用法（<strong>这是废话</strong>，我们打的啥，不就是DVWA_DOM_XSS吗，嘘，别说话，看我表演）</p>
+<pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>XSS<span class="token punctuation">"</span></span> <span class="token attr-name">method</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>GET<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>     //从这里看出这是用GET提交表单
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>select</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>default<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script language-javascript">       <span class="token comment" spellcheck="true">//获取从url中的参数，如果字节大于或者等于零，则赋给变量 lang</span>
+                    <span class="token keyword">if</span> <span class="token punctuation">(</span>document<span class="token punctuation">.</span>location<span class="token punctuation">.</span>href<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token string">"default="</span><span class="token punctuation">)</span> <span class="token operator">>=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                        <span class="token keyword">var</span> lang <span class="token operator">=</span> document<span class="token punctuation">.</span>location<span class="token punctuation">.</span>href<span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span>document<span class="token punctuation">.</span>location<span class="token punctuation">.</span>href<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token string">"default="</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+                        <span class="token comment" spellcheck="true">//将获取到的参数变成选项，输出到前端。</span>
+                        document<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span><span class="token string">"&lt;option value='"</span> <span class="token operator">+</span> lang <span class="token operator">+</span> <span class="token string">"'>"</span> <span class="token operator">+</span> <span class="token function">decodeURI</span><span class="token punctuation">(</span>lang<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">"&lt;/option>"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+
+                        document<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span><span class="token string">"&lt;option value='' disabled='disabled'>----&lt;/option>"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span>
+
+                    document<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span><span class="token string">"&lt;option value='English'>English&lt;/option>"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    document<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span><span class="token string">"&lt;option value='French'>French&lt;/option>"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    document<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span><span class="token string">"&lt;option value='Spanish'>Spanish&lt;/option>"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    document<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span><span class="token string">"&lt;option value='German'>German&lt;/option>"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>option</span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>English<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>English<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>option</span><span class="token punctuation">></span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>option</span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span> <span class="token attr-name">disabled</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>disabled<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>----<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>option</span><span class="token punctuation">></span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>option</span>  <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>English<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>English<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>option</span><span class="token punctuation">></span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>option</span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>French<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>French<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>option</span><span class="token punctuation">></span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>option</span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Spanish<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Spanish<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>option</span><span class="token punctuation">></span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>option</span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>German<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>German<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>option</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>select</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>submit<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Select<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>form</span><span class="token punctuation">></span></span></code></pre>
+<p><strong><code>看我代码注释</code></strong></p>
+<p><strong>我们从选择列表选择的值赋值给default附加到url后，这段js代码将url中default的值赋给option标签的value属性节点和文本节点</strong>，<strong>所以我们拼接在URL中的?default=后面的payload会经过JS处理变成选项输出在前端。</strong>如下图所示：</p>
+<p><img src="https://raw.githubusercontent.com/Lu-sakura/images/master/bolg_file/images/picgo-githubSnipaste_2020-02-07_22-40-50.png" alt></p>
+<p>至于为什下面的选项里只有123而没有<code>&lt;script&gt;alert(/xss/)&lt;/script&gt;</code>是因为他被当做JavaScript代码在前端执行了。我们也可以看到在下面的码源里的<code>&lt;script&gt;alert(/xss/)&lt;/script&gt;</code>变成了灰色，说明已经被当做前端JavaScript执行了。</p>
+<p>或者，你这想，这段代码<code>&lt;script&gt;alert(/xss/)&lt;/script&gt;</code>要是和123一起出现在选择框里说明源码option里的代码没有执行，被原封不动的输出到了前端，<strong>你还弹毛线的窗啊。</strong>你说是不是呢？（我不是有意加粗我字体的，你信吗，反正俺信。。。。嘻嘻。。。【狗头保命】）</p>
+<h3 id="Medium级"><a href="#Medium级" class="headerlink" title="Medium级"></a><strong>Medium</strong>级</h3><p>有了初级的经验，我就不多说废话了。我们直接测试刚才的payload</p>
+<pre class=" language-JavaScript"><code class="language-JavaScript"><script>alert('hack')</script></code></pre>
+<p>发现不管用了，页面还自动跳转到了<code>English</code>选项。那我们变换大小写试试</p>
+<pre><code>&lt;Script&gt;alert(&#39;hack&#39;)&lt;/scriPt&gt;</code></pre><p>我擦，还不可以用，页面还是自动跳转到了<code>English</code>选项。难道带有script这个关键字就会触发安全防护？</p>
+<p>那我们换一个没有script关键字的还能达到其类似弹窗效果的paylaod试试，代码如下</p>
+<pre class=" language-JavaScript"><code class="language-JavaScript">123<img src=1 onerror=alert(/xss/)>    </code></pre>
+<p>欸，有门头了。这次它没自动跳转到<code>English</code>选项，</p>
+<p>但是，它没弹窗。。。看来还是失败了。我们F12看一下源码看看到底咋回事。</p>
+<p><img src="https://raw.githubusercontent.com/Lu-sakura/images/master/bolg_file/images/picgo-githubSnipaste_2020-02-07_23-28-52.png" alt></p>
+<p>不看不知道，一看吓一跳。我们的<code>&lt;img src=1 onerror=alert(/xss/)&gt;</code>没有了，不见了，也不知道去哪了，没有被显示。那我们那得构造一个payload让它显示出来是不是就能实现我们的攻击。</p>
+<p>怎么构造呢，这是个问题，但这也不是个问题。</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token operator">&lt;</span>script<span class="token operator">></span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>document<span class="token punctuation">.</span>location<span class="token punctuation">.</span>href<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token string">"default="</span><span class="token punctuation">)</span> <span class="token operator">>=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">var</span> lang <span class="token operator">=</span> document<span class="token punctuation">.</span>location<span class="token punctuation">.</span>href<span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span>document<span class="token punctuation">.</span>location<span class="token punctuation">.</span>href<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token string">"default="</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">//我们想办法在这里闭合option,select，那我们就直接传进来"&lt;/option>&lt;/select></span>
+        document<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span><span class="token string">"&lt;option value='"</span> <span class="token operator">+</span> lang <span class="token operator">+</span> <span class="token string">"'>"</span> <span class="token operator">+</span> <span class="token function">decodeURI</span><span class="token punctuation">(</span>lang<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">"&lt;/option>"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//当参数传进来时就会变成</span>
+<span class="token comment" spellcheck="true">//&lt;option value='" + lang + "'>""&lt;/option>&lt;/select>&lt;img src=1 onerror=alert(/xss/)> </span>
+<span class="token comment" spellcheck="true">//这样就达到让&lt;/select>&lt;img src=1 onerror=alert(/xss/)> 显示的目的</span>
+
+        document<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span><span class="token string">"&lt;option value='' disabled='disabled'>----&lt;/option>"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    document<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span><span class="token string">"&lt;option value='English'>English&lt;/option>"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    document<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span><span class="token string">"&lt;option value='French'>French&lt;/option>"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    document<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span><span class="token string">"&lt;option value='Spanish'>Spanish&lt;/option>"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    document<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span><span class="token string">"&lt;option value='German'>German&lt;/option>"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span></code></pre>
+<p><strong><code>看我代码注释</code></strong></p>
+<p>我对下图简单说说吧，绿色水印表示闭合select，黄色水印表示<code>&lt;img src=1 onerror=alert(/xss/)&gt;</code>成功显示</p>
+<p><strong>至于原理你看我代码注释吧，应该很容易理解</strong></p>
+<p><img src="https://raw.githubusercontent.com/Lu-sakura/images/master/bolg_file/images/picgo-githubSnipaste_2020-02-07_23-51-25.png" alt></p>
+<p>其实这里还有另一种绕过方式，这方式就比较绝了。</p>
+<p><strong>url中有一个字符为#，该字符后的数据不会发送到服务器端，从而绕过服务端过滤，构造连接为</strong></p>
+<pre class=" language-javascript"><code class="language-javascript">直接拼接在URL中的<span class="token operator">?</span><span class="token keyword">default</span><span class="token operator">=</span>后面
+#<span class="token operator">&lt;</span>script<span class="token operator">></span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token regex">/xss/</span><span class="token punctuation">)</span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span></code></pre>
+<p><img src="https://raw.githubusercontent.com/Lu-sakura/images/master/bolg_file/images/picgo-githubSnipaste_2020-02-08_00-32-33.png" alt></p>
+<p>对了，我还是说一嘴关于script被拦截的问题吧。</p>
+<p>审查源码（<strong>审查Medium级别HTML文件</strong>源码）发现一个PHP脚本，内容如下</p>
+<pre class=" language-PHP"><code class="language-PHP"><?php
+
+// Is there any input?
+if ( array_key_exists( "default", $_GET ) && !is_null ($_GET[ 'default' ]) ) {
+    $default = $_GET['default'];
+
+    # Do not allow script tags
+    if (stripos ($default, "<script") !== false) {
+        header ("location: ?default=English");
+        exit;
+    }
+}
+?> </code></pre>
+<p>说明如下：</p>
+<ul>
+<li><a href="http://www.runoob.com/php/func-array-key-exists.html" target="_blank" rel="noopener">array_key_exists</a>函数，检查表单get方法提交的参数是否有default</li>
+<li>!is_null ($_GET[ ‘default’ ])，default参数不为空</li>
+<li>以上2点都满足，那么把表单中提交的default参数值赋值给default变量。</li>
+<li>最后利用<a href="http://www.runoob.com/php/func-string-stripos.html" target="_blank" rel="noopener">stripos</a>函数检查default变量，如果包含”&lt;script”字符串，那就把URL的default值改为default=English。</li>
+</ul>
+<p><strong>说白了就是不允许出现script标签，否则就将default的值设为默认的English，（stripos还防止了大小写绕过）</strong></p>
+<h3 id="High级"><a href="#High级" class="headerlink" title="High级"></a><strong>High级</strong></h3><p>有了初级和的经验，我就不多说废话了。我们直接测试刚才的payload</p>
+<pre class=" language-JavaScript"><code class="language-JavaScript"><script>alert('hack')</script></code></pre>
+<p>发现不管用了，页面还自动跳转到了<code>English</code>选项。那我们变换大小写试试</p>
+<pre><code>&lt;Script&gt;alert(&#39;hack&#39;)&lt;/scriPt&gt;</code></pre><p>我擦，还不可以用，页面还是自动跳转到了<code>English</code>选项。难道带有script这个关键字就会触发安全防护？</p>
+<p>那我们换一个没有script关键字的还能达到其类似弹窗效果的paylaod试试，代码如下</p>
+<pre class=" language-JavaScript"><code class="language-JavaScript">123<img src=1 onerror=alert(/xss/)>    </code></pre>
+<p>我日，还不可以用，页面还是自动跳转到了<code>English</code>选项。难道禁止了带有非预期变量输入的安全防护？</p>
+<p>那可咋办，只能输入 <code>&quot;French&quot;  &quot;English&quot; &quot;German&quot; &quot;Spanish&quot;</code>这四个单词有鸟用。</p>
+<p>但是说巧不巧的，我们还有一种不限制拼接的方式绕过。那我们拿来试试吧。</p>
+<p><strong>url中有一个字符为#，该字符后的数据不会发送到服务器端，从而绕过服务端过滤，构造连接为</strong></p>
+<pre class=" language-javascript"><code class="language-javascript">直接拼接在URL中的<span class="token operator">?</span><span class="token keyword">default</span><span class="token operator">=</span>后面
+#<span class="token operator">&lt;</span>script<span class="token operator">></span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token regex">/xss/</span><span class="token punctuation">)</span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span></code></pre>
+<p>发现可行，这擦简直太棒了</p>
+<p><img src="https://raw.githubusercontent.com/Lu-sakura/images/master/bolg_file/images/picgo-githubSnipaste_2020-02-08_00-19-44.png" alt></p>
+<p>那我们来审查一下High级别HTML文件源码</p>
+<pre class=" language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
+<span class="token shell-comment comment"># Is there any input?</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span> <span class="token function">array_key_exists</span><span class="token punctuation">(</span> <span class="token string">"default"</span><span class="token punctuation">,</span> <span class="token variable">$_GET</span> <span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span><span class="token function">is_null</span> <span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span> <span class="token string">'default'</span> <span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token shell-comment comment"># White list the allowable languages</span>
+    <span class="token keyword">switch</span> <span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string">'default'</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">case</span> <span class="token string">"French"</span><span class="token punctuation">:</span>
+        <span class="token keyword">case</span> <span class="token string">"English"</span><span class="token punctuation">:</span>
+        <span class="token keyword">case</span> <span class="token string">"German"</span><span class="token punctuation">:</span>
+        <span class="token keyword">case</span> <span class="token string">"Spanish"</span><span class="token punctuation">:</span>
+            <span class="token shell-comment comment"># ok</span>
+            <span class="token keyword">break</span><span class="token punctuation">;</span>
+        <span class="token keyword">default</span><span class="token punctuation">:</span>
+            <span class="token function">header</span> <span class="token punctuation">(</span><span class="token string">"location: ?default=English"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            exit<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token delimiter">?></span> </code></pre>
+<p><strong>在这里，下拉列表框的值设置了白名单，只允许French，English，German，Spanish。如果不是以上这些值，那就是默认值English。这里注入方法只有利用#符号。</strong></p>
+<h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p><strong>由于篇幅有限，我在这里就不在过多讲解其他paylaod。那我下面做个简单的小扩展吧。</strong></p>
+<pre class=" language-javascript"><code class="language-javascript">#初级
+http<span class="token punctuation">:</span><span class="token operator">/</span><span class="token operator">/</span><span class="token number">127.0</span><span class="token punctuation">.</span><span class="token number">0.1</span><span class="token operator">/</span>DVWA<span class="token operator">-</span>master<span class="token operator">/</span>vulnerabilities<span class="token operator">/</span>xss_d<span class="token operator">/</span><span class="token operator">?</span>#<span class="token keyword">default</span><span class="token operator">=</span>English <span class="token operator">&lt;</span>script<span class="token operator">></span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token regex">/xss/</span><span class="token punctuation">)</span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span>
+http<span class="token punctuation">:</span><span class="token operator">/</span><span class="token operator">/</span>www<span class="token punctuation">.</span>dvwa<span class="token punctuation">.</span>com<span class="token operator">/</span>vulnerabilities<span class="token operator">/</span>xss_d<span class="token operator">/</span><span class="token operator">?</span><span class="token keyword">default</span><span class="token operator">=</span><span class="token operator">&lt;</span><span class="token operator">/</span>select<span class="token operator">></span><span class="token operator">&lt;</span>img src<span class="token operator">=</span><span class="token number">1</span> onerror<span class="token operator">=</span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token regex">/xss/</span><span class="token punctuation">)</span><span class="token operator">></span>
+http<span class="token punctuation">:</span><span class="token operator">/</span><span class="token operator">/</span>www<span class="token punctuation">.</span>dvwa<span class="token punctuation">.</span>com<span class="token operator">/</span>vulnerabilities<span class="token operator">/</span>xss_d<span class="token operator">/</span><span class="token operator">?</span><span class="token keyword">default</span><span class="token operator">=</span>English<span class="token operator">&lt;</span><span class="token operator">/</span>option<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>select<span class="token operator">></span><span class="token operator">&lt;</span>img src<span class="token operator">=</span><span class="token number">1</span> onerror<span class="token operator">=</span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token regex">/xss/</span><span class="token punctuation">)</span><span class="token operator">></span>
+
+#中级
+http<span class="token punctuation">:</span><span class="token operator">/</span><span class="token operator">/</span><span class="token number">127.0</span><span class="token punctuation">.</span><span class="token number">0.1</span><span class="token operator">/</span>DVWA<span class="token operator">-</span>master<span class="token operator">/</span>vulnerabilities<span class="token operator">/</span>xss_d<span class="token operator">/</span><span class="token operator">?</span>#<span class="token keyword">default</span><span class="token operator">=</span>English <span class="token operator">&lt;</span>script<span class="token operator">></span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token regex">/xss/</span><span class="token punctuation">)</span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span>
+http<span class="token punctuation">:</span><span class="token operator">/</span><span class="token operator">/</span>www<span class="token punctuation">.</span>dvwa<span class="token punctuation">.</span>com<span class="token operator">/</span>vulnerabilities<span class="token operator">/</span>xss_d<span class="token operator">/</span><span class="token operator">?</span><span class="token keyword">default</span><span class="token operator">=</span>English<span class="token operator">&lt;</span><span class="token operator">/</span>select<span class="token operator">></span><span class="token operator">&lt;</span>img src<span class="token operator">=</span><span class="token number">1</span> onerror<span class="token operator">=</span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token regex">/xss/</span><span class="token punctuation">)</span><span class="token operator">></span>
+
+#高级
+http<span class="token punctuation">:</span><span class="token operator">/</span><span class="token operator">/</span><span class="token number">127.0</span><span class="token punctuation">.</span><span class="token number">0.1</span><span class="token operator">/</span>DVWA<span class="token operator">-</span>master<span class="token operator">/</span>vulnerabilities<span class="token operator">/</span>xss_d<span class="token operator">/</span><span class="token operator">?</span>#<span class="token keyword">default</span><span class="token operator">=</span>English <span class="token operator">&lt;</span>script<span class="token operator">></span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token regex">/xss/</span><span class="token punctuation">)</span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span></code></pre>
+
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        Author:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://Lu-sakura.github.io" rel="external nofollow noreferrer">Lu-sakura</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        Link:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://Lu-sakura.github.io/2020/01/26/dvwa-dom-xing-xss/">https://Lu-sakura.github.io/2020/01/26/dvwa-dom-xing-xss/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        Reprint policy:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    All articles in this blog are used except for special statements
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    reprint polocy. If reproduced, please indicate source
+                    <a href="https://Lu-sakura.github.io" target="_blank">Lu-sakura</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/DVWA-XSS-DOM/">
+                                    <span class="chip bg-color">DVWA_XSS_DOM</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+            <div class="card">
+                <a href="/2020/01/27/pikachu-xss/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="XSS_进阶">
+                        
+                        <span class="card-title">XSS_进阶</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            pikachu_XSS
+这绝对是篇假的pikachu_xss攻略，我敢保证绝对没有人会写这么水的文章。
+
+我想说的是：这篇可能看确实起来过于杂乱无章，摸不着头脑，有些不够详尽。一方面是因为我想前几篇写的很详细，另一方面我想填一下前面几篇的坑
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-01-27
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            Lu-sakura
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/pikachu-XSS/">
+                        <span class="chip bg-color">pikachu_XSS</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/01/25/xss/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="XSS简介">
+                        
+                        <span class="card-title">XSS简介</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            xss
+xss是客户端代码注入，通常注入代码是JavaScript
+区别于命令注入，SQL注入等服务端代码注入
+
+什么是XSS?一、简介 XSS又叫CSS  (Cross Site Script) ，跨站脚本攻击。它指的是恶意攻击者往Web
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-01-25
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            Lu-sakura
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/DVWA-XSS-%E5%85%A5%E9%97%A8/">
+                        <span class="chip bg-color">DVWA_XSS_入门</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+    
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+<style type="text/css">
+code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+</style>
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;TOC</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+    <footer class="page-footer bg-color">
+    <div class="container row center-align" style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            <span id="year">2019</span>
+            <a href="https://Lu-sakura.github.io" target="_blank">Lu-sakura</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">29.8k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2019";
+                    var startMonth = "6";
+                    var startDate = "28";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/Lu-sakura" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:1981754466@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1981754466" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1981754466" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

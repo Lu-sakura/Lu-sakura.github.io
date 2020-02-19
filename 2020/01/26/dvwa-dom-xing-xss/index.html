@@ -544,12 +544,12 @@ DOM 是 W3C（万维网联盟）的标准。DOM 定义了访问 HTML ">
 <p>至于为什下面的选项里只有123而没有<code>&lt;script&gt;alert(/xss/)&lt;/script&gt;</code>是因为他被当做JavaScript代码在前端执行了。我们也可以看到在下面的码源里的<code>&lt;script&gt;alert(/xss/)&lt;/script&gt;</code>变成了灰色，说明已经被当做前端JavaScript执行了。</p>
 <p>或者，你这想，这段代码<code>&lt;script&gt;alert(/xss/)&lt;/script&gt;</code>要是和123一起出现在选择框里说明源码option里的代码没有执行，被原封不动的输出到了前端，<strong>你还弹毛线的窗啊。</strong>你说是不是呢？（我不是有意加粗我字体的，你信吗，反正俺信。。。。嘻嘻。。。【狗头保命】）</p>
 <h3 id="Medium级"><a href="#Medium级" class="headerlink" title="Medium级"></a><strong>Medium</strong>级</h3><p>有了初级的经验，我就不多说废话了。我们直接测试刚才的payload</p>
-<pre class=" language-JavaScript"><code class="language-JavaScript"><script>alert('hack')</script></code></pre>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token operator">&lt;</span>script<span class="token operator">></span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'hack'</span><span class="token punctuation">)</span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span></code></pre>
 <p>发现不管用了，页面还自动跳转到了<code>English</code>选项。那我们变换大小写试试</p>
 <pre class=" language-javascript"><code class="language-javascript"><span class="token operator">&lt;</span>Script<span class="token operator">></span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'hack'</span><span class="token punctuation">)</span><span class="token operator">&lt;</span><span class="token operator">/</span>scriPt<span class="token operator">></span></code></pre>
 <p>我擦，还不可以用，页面还是自动跳转到了<code>English</code>选项。难道带有script这个关键字就会触发安全防护？</p>
 <p>那我们换一个没有script关键字的还能达到其类似弹窗效果的paylaod试试，代码如下</p>
-<pre class=" language-JavaScript"><code class="language-JavaScript">123<img src=1 onerror=alert(/xss/)>    </code></pre>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token number">123</span><span class="token operator">&lt;</span>img src<span class="token operator">=</span><span class="token number">1</span> onerror<span class="token operator">=</span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token regex">/xss/</span><span class="token punctuation">)</span><span class="token operator">></span>    </code></pre>
 <p>欸，有门头了。这次它没自动跳转到<code>English</code>选项，</p>
 <p>但是，它没弹窗。。。看来还是失败了。我们F12看一下源码看看到底咋回事。</p>
 <p><img src="https://raw.githubusercontent.com/Lu-sakura/images/master/bolg_file/images/picgo-githubSnipaste_2020-02-07_23-28-52.png" alt></p>
@@ -606,13 +606,12 @@ DOM 是 W3C（万维网联盟）的标准。DOM 定义了访问 HTML ">
 </ul>
 <p><strong>说白了就是不允许出现script标签，否则就将default的值设为默认的English，（stripos还防止了大小写绕过）</strong></p>
 <h3 id="High级"><a href="#High级" class="headerlink" title="High级"></a><strong>High级</strong></h3><p>有了初级和的经验，我就不多说废话了。我们直接测试刚才的payload</p>
-<pre class=" language-JavaScript"><code class="language-JavaScript"><script>alert('hack')</script></code></pre>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token operator">&lt;</span>script<span class="token operator">></span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'hack'</span><span class="token punctuation">)</span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span></code></pre>
 <p>发现不管用了，页面还自动跳转到了<code>English</code>选项。那我们变换大小写试试</p>
 <pre class=" language-javascript"><code class="language-javascript"><span class="token operator">&lt;</span>Script<span class="token operator">></span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'hack'</span><span class="token punctuation">)</span><span class="token operator">&lt;</span><span class="token operator">/</span>scriPt<span class="token operator">></span></code></pre>
 <p>我擦，还不可以用，页面还是自动跳转到了<code>English</code>选项。难道带有script这个关键字就会触发安全防护？</p>
 <p>那我们换一个没有script关键字的还能达到其类似弹窗效果的paylaod试试，代码如下</p>
-<pre class=" language-JavaScript"><code class="language-JavaScript">123<img src=1 onerror=alert(/xss/)>    </code></pre>
-<p>我日，还不可以用，页面还是自动跳转到了<code>English</code>选项。难道禁止了带有非预期变量输入的安全防护？</p>
+<pre><code>123&lt;img src=1 onerror=alert(/xss/)&gt;    </code></pre><p>我日，还不可以用，页面还是自动跳转到了<code>English</code>选项。难道禁止了带有非预期变量输入的安全防护？</p>
 <p>那可咋办，只能输入 <code>&quot;French&quot;  &quot;English&quot; &quot;German&quot; &quot;Spanish&quot;</code>这四个单词有鸟用。</p>
 <p>但是说巧不巧的，我们还有一种不限制拼接的方式绕过。那我们拿来试试吧。</p>
 <p><strong>url中有一个字符为#，该字符后的数据不会发送到服务器端，从而绕过服务端过滤，构造连接为</strong></p>
@@ -1119,7 +1118,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">36.1k</span>&nbsp;字
+                class="white-color">39.2k</span>&nbsp;字
             
             
             

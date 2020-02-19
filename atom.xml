@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://lu-sakura.github.io/"/>
-  <updated>2020-02-18T15:17:59.573Z</updated>
+  <updated>2020-02-19T12:34:06.826Z</updated>
   <id>https://lu-sakura.github.io/</id>
   
   <author>
@@ -15,6 +15,81 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>mysql注入提升</title>
+    <link href="https://lu-sakura.github.io/2020/02/12/pi-qia-qiu-da-zuo-zhan/"/>
+    <id>https://lu-sakura.github.io/2020/02/12/pi-qia-qiu-da-zuo-zhan/</id>
+    <published>2020-02-12T06:33:33.000Z</published>
+    <updated>2020-02-19T12:34:06.826Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;皮卡丘“大作战”之sql注入&quot;&gt;&lt;a href=&quot;#皮卡丘“大作战”之sql注入&quot; class=&quot;headerlink&quot; title=&quot;皮卡丘“大作战”之sql注入&quot;&gt;&lt;/a&gt;皮卡丘“大作战”之sql注入&lt;/h1&gt;&lt;h2
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="pikachu_mysql注入" scheme="https://Lu-sakura.github.io/tags/pikachu-mysql%E6%B3%A8%E5%85%A5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>mysql注入基础</title>
+    <link href="https://lu-sakura.github.io/2020/02/10/sql-zhu-ru-ji-chu/"/>
+    <id>https://lu-sakura.github.io/2020/02/10/sql-zhu-ru-ji-chu/</id>
+    <published>2020-02-10T04:33:33.000Z</published>
+    <updated>2020-02-19T12:32:17.567Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;SQL注入基础&quot;&gt;&lt;a href=&quot;#SQL注入基础&quot; class=&quot;headerlink&quot; title=&quot;SQL注入基础&quot;&gt;&lt;/a&gt;SQL注入基础&lt;/h1&gt;&lt;h2 id=&quot;SQL注入介绍&quot;&gt;&lt;a href=&quot;#SQL注入介绍&quot;
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="mysql注入简单了解" scheme="https://Lu-sakura.github.io/tags/mysql%E6%B3%A8%E5%85%A5%E7%AE%80%E5%8D%95%E4%BA%86%E8%A7%A3/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>web安全mysql快速入门</title>
+    <link href="https://lu-sakura.github.io/2020/02/08/mysql-kuai-su-ru-men/"/>
+    <id>https://lu-sakura.github.io/2020/02/08/mysql-kuai-su-ru-men/</id>
+    <published>2020-02-08T04:33:33.000Z</published>
+    <updated>2020-02-19T12:30:47.342Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;MYSQL&quot;&gt;&lt;a href=&quot;#MYSQL&quot; class=&quot;headerlink&quot; title=&quot;MYSQL&quot;&gt;&lt;/a&gt;MYSQL&lt;/h1&gt;&lt;h2 id=&quot;快速学习mysql&quot;&gt;&lt;a href=&quot;#快速学习mysql&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="mysql_简单了解" scheme="https://Lu-sakura.github.io/tags/mysql-%E7%AE%80%E5%8D%95%E4%BA%86%E8%A7%A3/"/>
+    
+  </entry>
   
   <entry>
     <title>文件上传漏洞--初识</title>
@@ -147,7 +222,7 @@
     <link href="https://lu-sakura.github.io/2020/01/27/pikachu-xss/"/>
     <id>https://lu-sakura.github.io/2020/01/27/pikachu-xss/</id>
     <published>2020-01-27T06:33:33.000Z</published>
-    <updated>2020-02-18T15:01:32.564Z</updated>
+    <updated>2020-02-19T12:39:57.762Z</updated>
     
     <summary type="html">
     
@@ -172,7 +247,7 @@
     <link href="https://lu-sakura.github.io/2020/01/26/dvwa-dom-xing-xss/"/>
     <id>https://lu-sakura.github.io/2020/01/26/dvwa-dom-xing-xss/</id>
     <published>2020-01-26T04:33:33.000Z</published>
-    <updated>2020-02-18T14:51:47.590Z</updated>
+    <updated>2020-02-19T12:38:03.605Z</updated>
     
     <summary type="html">
     

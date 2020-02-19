@@ -546,7 +546,8 @@ DOM 是 W3C（万维网联盟）的标准。DOM 定义了访问 HTML ">
 <h3 id="Medium级"><a href="#Medium级" class="headerlink" title="Medium级"></a><strong>Medium</strong>级</h3><p>有了初级的经验，我就不多说废话了。我们直接测试刚才的payload</p>
 <pre class=" language-JavaScript"><code class="language-JavaScript"><script>alert('hack')</script></code></pre>
 <p>发现不管用了，页面还自动跳转到了<code>English</code>选项。那我们变换大小写试试</p>
-<pre><code>&lt;Script&gt;alert(&#39;hack&#39;)&lt;/scriPt&gt;</code></pre><p>我擦，还不可以用，页面还是自动跳转到了<code>English</code>选项。难道带有script这个关键字就会触发安全防护？</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token operator">&lt;</span>Script<span class="token operator">></span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'hack'</span><span class="token punctuation">)</span><span class="token operator">&lt;</span><span class="token operator">/</span>scriPt<span class="token operator">></span></code></pre>
+<p>我擦，还不可以用，页面还是自动跳转到了<code>English</code>选项。难道带有script这个关键字就会触发安全防护？</p>
 <p>那我们换一个没有script关键字的还能达到其类似弹窗效果的paylaod试试，代码如下</p>
 <pre class=" language-JavaScript"><code class="language-JavaScript">123<img src=1 onerror=alert(/xss/)>    </code></pre>
 <p>欸，有门头了。这次它没自动跳转到<code>English</code>选项，</p>
@@ -583,19 +584,19 @@ DOM 是 W3C（万维网联盟）的标准。DOM 定义了访问 HTML ">
 <p><img src="https://raw.githubusercontent.com/Lu-sakura/images/master/bolg_file/images/picgo-githubSnipaste_2020-02-08_00-32-33.png" alt></p>
 <p>对了，我还是说一嘴关于script被拦截的问题吧。</p>
 <p>审查源码（<strong>审查Medium级别HTML文件</strong>源码）发现一个PHP脚本，内容如下</p>
-<pre class=" language-PHP"><code class="language-PHP"><?php
+<pre class=" language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
 
-// Is there any input?
-if ( array_key_exists( "default", $_GET ) && !is_null ($_GET[ 'default' ]) ) {
-    $default = $_GET['default'];
+<span class="token comment" spellcheck="true">// Is there any input?</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span> <span class="token function">array_key_exists</span><span class="token punctuation">(</span> <span class="token string">"default"</span><span class="token punctuation">,</span> <span class="token variable">$_GET</span> <span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span><span class="token function">is_null</span> <span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span> <span class="token string">'default'</span> <span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token variable">$default</span> <span class="token operator">=</span> <span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string">'default'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 
-    # Do not allow script tags
-    if (stripos ($default, "<script") !== false) {
-        header ("location: ?default=English");
-        exit;
-    }
-}
-?> </code></pre>
+    <span class="token shell-comment comment"># Do not allow script tags</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">stripos</span> <span class="token punctuation">(</span><span class="token variable">$default</span><span class="token punctuation">,</span> <span class="token string">"&lt;script"</span><span class="token punctuation">)</span> <span class="token operator">!==</span> <span class="token boolean">false</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">header</span> <span class="token punctuation">(</span><span class="token string">"location: ?default=English"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        exit<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token delimiter">?></span> </code></pre>
 <p>说明如下：</p>
 <ul>
 <li><a href="http://www.runoob.com/php/func-array-key-exists.html" target="_blank" rel="noopener">array_key_exists</a>函数，检查表单get方法提交的参数是否有default</li>
@@ -607,7 +608,8 @@ if ( array_key_exists( "default", $_GET ) && !is_null ($_GET[ 'default' ]) ) {
 <h3 id="High级"><a href="#High级" class="headerlink" title="High级"></a><strong>High级</strong></h3><p>有了初级和的经验，我就不多说废话了。我们直接测试刚才的payload</p>
 <pre class=" language-JavaScript"><code class="language-JavaScript"><script>alert('hack')</script></code></pre>
 <p>发现不管用了，页面还自动跳转到了<code>English</code>选项。那我们变换大小写试试</p>
-<pre><code>&lt;Script&gt;alert(&#39;hack&#39;)&lt;/scriPt&gt;</code></pre><p>我擦，还不可以用，页面还是自动跳转到了<code>English</code>选项。难道带有script这个关键字就会触发安全防护？</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token operator">&lt;</span>Script<span class="token operator">></span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'hack'</span><span class="token punctuation">)</span><span class="token operator">&lt;</span><span class="token operator">/</span>scriPt<span class="token operator">></span></code></pre>
+<p>我擦，还不可以用，页面还是自动跳转到了<code>English</code>选项。难道带有script这个关键字就会触发安全防护？</p>
 <p>那我们换一个没有script关键字的还能达到其类似弹窗效果的paylaod试试，代码如下</p>
 <pre class=" language-JavaScript"><code class="language-JavaScript">123<img src=1 onerror=alert(/xss/)>    </code></pre>
 <p>我日，还不可以用，页面还是自动跳转到了<code>English</code>选项。难道禁止了带有非预期变量输入的安全防护？</p>
@@ -1117,7 +1119,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">29.8k</span>&nbsp;字
+                class="white-color">36.1k</span>&nbsp;字
             
             
             
